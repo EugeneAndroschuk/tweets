@@ -10,8 +10,7 @@
     background-repeat: no-repeat;
     background-size: auto;
 
-    font-style: normal;
-    font-weight: 500;
+    font-family: 'Montserrat-500';
     font-size: 20px;
     line-height: 24px;
     text-transform: uppercase;
@@ -62,8 +61,7 @@
     width: 196px;
     height: 50px;
 
-    font-style: normal;
-    font-weight: 600;
+    font-family: 'Montserrat-600';
     font-size: 18px;
     line-height: 1.22;
     text-transform: uppercase;
@@ -72,8 +70,10 @@
     background-color: #EBD8FF;
     box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+
+    cursor: pointer;
 }
 
-.follow-btn-pressed {
+.following-btn {
     background-color: #5CD3A8;
 }

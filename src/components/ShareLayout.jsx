@@ -1,23 +1,22 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Navigation from "./Navigation/Navigation";
+import { AppBar, Toolbar } from "@mui/material";
 
 const ShareLayout = () => {
 
     return (
         <>
-        <header>
-            <ul>
-                <li>
-                    <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/tweets">Tweets</NavLink>
-                </li>
-            </ul>
-        </header>
-        <main>
-            <Outlet/>
-        </main>
-        </> 
+            <header>
+                <AppBar sx={{ position: 'static' }}>
+                    <Toolbar>
+                        <Navigation />
+                    </Toolbar>
+                </AppBar>
+            </header>
+            <main>
+                <Outlet />
+            </main>
+        </>
     );
 }
 

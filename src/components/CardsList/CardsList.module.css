@@ -1,3 +1,51 @@
+.users {
+    margin-bottom: 30px;
+}
+
+.dropDown {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 8px;
+}
+
 .users-list {
-    margin-left: 100px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.loadMore-btn {
+    width: 100%;
+    height: 50px;
+
+    font-family: 'Montserrat-500';
+    font-size: 18px;
+    line-height: 1.22;
+    text-transform: uppercase;
+    color: #373737;
+
+    background-color: #EBD8FF;
+    box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.loadMore-btn:hover {
+    background-color: #dec0fe;
+}
+
+.loadMore-btn_disabled {
+    width: 100%;
+    height: 50px;
+
+    font-family: 'Montserrat-600';
+    line-height: 1.22;
+    text-transform: uppercase;
+    color: #6f6e6e;
+
+    background-color: white;
+    box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
 }
