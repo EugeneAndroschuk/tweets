@@ -15,3 +15,10 @@
 .goback-btn:hover {
     background-color: #dec0fe;
 }
+
+.home-bgd {
+    height: 100vh;
+    background-image: linear-gradient(114.99deg, rgba(71, 28, 169, 0.6) -0.99%, rgba(87, 54, 163, 0.6) 54.28%,rgba(75, 42, 153, 0.6) 78.99%), url('../images/signs.png') ;
+        background-repeat: repeat;
+        background-size: auto;
+}
