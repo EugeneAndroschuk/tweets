@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/tweets/static/css/main.72109cb8.css",
-    "main.js": "/tweets/static/js/main.2b3f7557.js",
+    "main.css": "/tweets/static/css/main.3b6006c0.css",
+    "main.js": "/tweets/static/js/main.96b0a720.js",
     "static/js/787.72376a18.chunk.js": "/tweets/static/js/787.72376a18.chunk.js",
     "static/media/Montserrat-SemiBold.ttf": "/tweets/static/media/Montserrat-SemiBold.62b8eee010e3957d425f.ttf",
     "static/media/Montserrat-Medium.ttf": "/tweets/static/media/Montserrat-Medium.a281f04d4c8926e7dea1.ttf",
     "static/media/signs.png": "/tweets/static/media/signs.b186e544641a66e17d83.png",
     "index.html": "/tweets/index.html",
-    "main.72109cb8.css.map": "/tweets/static/css/main.72109cb8.css.map",
-    "main.2b3f7557.js.map": "/tweets/static/js/main.2b3f7557.js.map",
+    "main.3b6006c0.css.map": "/tweets/static/css/main.3b6006c0.css.map",
+    "main.96b0a720.js.map": "/tweets/static/js/main.96b0a720.js.map",
     "787.72376a18.chunk.js.map": "/tweets/static/js/787.72376a18.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.72109cb8.css",
-    "static/js/main.2b3f7557.js"
+    "static/css/main.3b6006c0.css",
+    "static/js/main.96b0a720.js"
   ]
 }
