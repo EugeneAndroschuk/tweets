@@ -5,38 +5,21 @@ import Select from '@mui/material/Select';
 import Card from "../Card/Card";
 import css from "./CardsList.module.css";
 import { Divider } from "@mui/material";
-
-const TOTAL_PAGES = 12 / 3;
+import Loader from "../Loader/Loader";
 
 const CardsList = () => {
     const [users, setUsers] = useState([]);
     const [nextPage, setNextPage] = useState(() => onSetCurrentPage());
-    const [isDisabled, setIsDisabled] = useState(() => onSetIsDisabled());
+    const [maxPage, setMaxPage] = useState(null);
+    const [isDisabled, setIsDisabled] = useState(false);
     const [filterItem, setFilterItem] = useState(' ');
+    const [isLoading, setIsLoading] = useState(false);
     const isFirstRender = useRef(true);
     const isFirstRender2 = useRef(true);
 
     const filteredUsers = getFilteredUsers(users, filterItem);
 
-    // useEffect(() => {
-    //     if (users.length === 0) {
-    //         const data = FetchUsers.fetchUsersAllPagination(1);
-    //         data.then(res => {
-    //             const editedRes = res.map(user => ({ ...user, isFollowing: false, }));
-    //             setUsers([...editedRes]);
-    //         });
-    //     }
-    // }, [users.length]);
-
     useEffect(() => {
-        // if (isFirstRender2.current) { isFirstRender2.current = false; return }
-
-        // const data = FetchUsers.fetchUsersAllPagination(nextPage);
-        // data.then(res => {
-        //     const editedRes = res.map(user => ({ ...user, isFollowing: false, }));
-        //     setUsers(prev => [...prev, ...editedRes]);
-        // });
-
         function onReadFromLocalStorage() {
             try {
                 const unparsed = localStorage.getItem('tweets');
@@ -48,10 +31,16 @@ const CardsList = () => {
                 return [];
             }
         }
+
         const usersFromLocalStorage = onReadFromLocalStorage();
         if (usersFromLocalStorage.length !== 0) {
+            setIsLoading(true);
+
             const data = FetchUsers.fetchUsersAll();
             data.then(res => {
+                setMaxPage(Math.ceil(res.length / 3))
+                if (res.length === usersFromLocalStorage.length) setIsDisabled(true);
+                setIsLoading(false);
                 const initialUsers = usersFromLocalStorage.map(userLocalStorage => {
                     const userFetch = res.filter(userFetchUsers => userLocalStorage.id === userFetchUsers.id);
                     if (userFetch.length === 0) {
@@ -63,8 +52,14 @@ const CardsList = () => {
                 setUsers([...initialUsers]);
             });
         } else {
+            setIsLoading(true);
+
+            const dataForMaxPage = FetchUsers.fetchUsersAll();
+            dataForMaxPage.then(res => setMaxPage(Math.ceil(res.length / 3)));
+
             const data = FetchUsers.fetchUsersAllPagination(1);
             data.then(res => {
+                setIsLoading(false);
                 const editedRes = res.map(user => ({ ...user, isFollowing: false, }));
                 setUsers([...editedRes]);
             });
@@ -73,8 +68,10 @@ const CardsList = () => {
 
     useEffect(()=>{
         if (isFirstRender2.current) { isFirstRender2.current = false; return }
+        setIsLoading(true);
         const data = FetchUsers.fetchUsersAllPagination(nextPage);
         data.then(res => {
+            setIsLoading(false);
             const editedRes = res.map(user => ({ ...user, isFollowing: false, }));
             setUsers(prev => [...prev, ...editedRes]);
         });
@@ -88,7 +85,7 @@ const CardsList = () => {
 
     const onClickLoadMore = () => {
         setNextPage(prev => prev + 1);
-        if (nextPage >= TOTAL_PAGES - 1) {
+        if (nextPage >= maxPage - 1) {
             setIsDisabled(true);
             alert('It is last page');
         }
@@ -106,39 +103,15 @@ const CardsList = () => {
         setFilterItem(event.target.value);
     };
 
-    // function onReadFromLocalStorage() {
-    //     try {
-    //         const unparsed = localStorage.getItem('tweets');
-    //         const parsed = JSON.parse(unparsed);
-    //         if (parsed !== null) return [...parsed]
-    //         else return [];
-    //     } catch (error) {
-    //         console.log(error);
-    //         return [];
-    //     }
-    // }
-
     function onSetCurrentPage() {
         try {
             const unparsed = localStorage.getItem('tweets');
             const parsed = JSON.parse(unparsed);
-            if (parsed !== null) return Math.ceil(parsed.length / 3)
+            if (parsed !== null) return Math.ceil(parsed.length / 3);
             else return 1;
         } catch (error) {
             console.log(error);
             return 1;
-        }
-    }
-
-    function onSetIsDisabled() {
-        try {
-            const unparsed = localStorage.getItem('tweets');
-            const parsed = JSON.parse(unparsed);
-            if (parsed !== null && Math.ceil(parsed.length / 3) >= 4) return true;
-            else return false;
-        } catch (error) {
-            console.log(error);
-            return false;
         }
     }
 
@@ -162,10 +135,7 @@ const CardsList = () => {
                     inputProps={{ 'aria-label': 'Without label' }}
                     sx={{ paddingLeft: '16px', paddingRight: '16px' }}
                 >
-                    <MenuItem value=" ">
-                        <em>show all</em>
-                    </MenuItem>
-                    {/* <MenuItem value={10}>show all</MenuItem> */}
+                    <MenuItem value=" "><em>show all</em></MenuItem>
                     <MenuItem value="follow">follow</MenuItem>
                     <MenuItem value="followings">followings</MenuItem>
                 </Select>
@@ -179,8 +149,9 @@ const CardsList = () => {
                     </li>
                 ))}
             </ul>
+            {isLoading && <Loader/>}
 
-            {!isDisabled && <button className={css['loadMore-btn']} onClick={onClickLoadMore} disabled={isDisabled} type="button">Load More</button>}
+            {!isDisabled && !isLoading &&<button className={css['loadMore-btn']} onClick={onClickLoadMore} disabled={isDisabled} type="button">Load More</button>}
         </section>
     );
 }

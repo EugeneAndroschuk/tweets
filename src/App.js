@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ShareLayout />} >
           <Route index element={<Home />} />
-          <Route path="/tweetss" element={<Tweets />} />
+          <Route path="/tweets" element={<Tweets />} />
           <Route path="*" element={<h1>Not found</h1>} />
         </Route>
       </Routes>

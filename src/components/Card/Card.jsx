@@ -20,6 +20,10 @@ const Card = ({ user, onChangeFollowers }) => {
         setIsPressed(prev => !prev);
     }
 
+    function getNumberWithDivider(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     // const onClickUpdate = () => {
     //     const data = FetchUsers.updateFollowersUser(user);
     //     data.then(res => onChangeFollowers(res));
@@ -31,7 +35,7 @@ const Card = ({ user, onChangeFollowers }) => {
                 <img className={css['avatar-image']} src={user.avatar} width="62" height="62" alt="avatar" />
             </div>
             <p className={css['user-tweets']}>{user.tweets} TWEETS</p>
-            <p className={css['user-followers']}>{user.followers} FOLLOWERS</p>
+            <p className={css['user-followers']}>{getNumberWithDivider(user.followers)} FOLLOWERS</p>
             <button className={isPressed || user.isFollowing ? (`${css['follow-btn']} ${css['following-btn']}`) : css['follow-btn']} onClick={onClickButton} type="button">
                 {isPressed || user.isFollowing ? "FOLLOWING" : "FOLLOW"}
             </button>
