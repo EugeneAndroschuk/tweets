@@ -36,7 +36,7 @@ const Navigation = () => {
                     </StyledLink>
                 </li>
                 <li>
-                    <StyledLink to="/tweets">
+                    <StyledLink to="/tweetss">
                         Tweets
                     </StyledLink>
                 </li>
