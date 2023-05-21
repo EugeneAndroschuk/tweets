@@ -1,4 +1,3 @@
-// import '../../fonts/Montserrat-Italic-VariableFont_wght.ttf'
 import { useState } from "react";
 // import avatar from "../../images/hansel.png"
 import FetchUsers from "../../services/FetchUsers";
@@ -6,7 +5,6 @@ import css from "./Card.module.css";
 
 const Card = ({ user, onChangeFollowers }) => {
     const [isPressed, setIsPressed] = useState(user.isFollowing);
-    // const [currentFollowers, setCurrentFollowers] = useState(user.followers)
 
     const onClickButton = () => {
         if(!isPressed) {
@@ -24,11 +22,6 @@ const Card = ({ user, onChangeFollowers }) => {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    // const onClickUpdate = () => {
-    //     const data = FetchUsers.updateFollowersUser(user);
-    //     data.then(res => onChangeFollowers(res));
-    // }
-
     return (
         <div className={css['card-wrap']}>
             <div className={css['avatar-frame']}>
@@ -39,7 +32,6 @@ const Card = ({ user, onChangeFollowers }) => {
             <button className={isPressed || user.isFollowing ? (`${css['follow-btn']} ${css['following-btn']}`) : css['follow-btn']} onClick={onClickButton} type="button">
                 {isPressed || user.isFollowing ? "FOLLOWING" : "FOLLOW"}
             </button>
-            {/* <button onClick={onClickUpdate}>Update folowwers</button> */}
         </div>
     );
 }
