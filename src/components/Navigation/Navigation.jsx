@@ -31,12 +31,12 @@ const Navigation = () => {
         <div className={commonCss.container}>
             <ul className={css.navigation}>
                 <li>
-                    <StyledLink to="/">
+                    <StyledLink to="/tweets">
                       Home
                     </StyledLink>
                 </li>
                 <li>
-                    <StyledLink to="/tweets">
+                    <StyledLink to="/tweets/tweets">
                         Tweets
                     </StyledLink>
                 </li>
