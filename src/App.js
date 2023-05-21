@@ -8,9 +8,9 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route exact path="/tweets" element={<ShareLayout />} >
+        <Route exact path="/" element={<ShareLayout />} >
           <Route exact index element={<Home />} />
-          <Route exact path="/tweets/tweets" element={<Tweets />} />
+          <Route exact path="/tweets" element={<Tweets />} />
           <Route exact path="*" element={<h1>Not found</h1>} />
         </Route>
       </Routes>
