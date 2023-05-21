@@ -41,7 +41,6 @@ const CardsList = () => {
             try {
                 const unparsed = localStorage.getItem('tweets');
                 const parsed = JSON.parse(unparsed);
-                console.log(parsed);
                 if (parsed !== null) return [...parsed]
                 else return [];
             } catch (error) {
@@ -64,7 +63,6 @@ const CardsList = () => {
                 setUsers([...initialUsers]);
             });
         } else {
-            console.log(usersFromLocalStorage.length)
             const data = FetchUsers.fetchUsersAllPagination(1);
             data.then(res => {
                 const editedRes = res.map(user => ({ ...user, isFollowing: false, }));

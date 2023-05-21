@@ -3,11 +3,11 @@
     gap: 50px;
 }
 
-.link:active {
+/* .link:active {
     background-color: green;
-}
+} */
 
-.navigation-btn {
+/* .navigation-btn {
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -24,4 +24,4 @@
 
 .navigation-btn:hover {
     background-color: #dec0fe;
-}
+} */
