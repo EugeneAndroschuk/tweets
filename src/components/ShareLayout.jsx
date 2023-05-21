@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 import { AppBar, Toolbar } from "@mui/material";
+import { Suspense } from "react";
+import Loader from "./Loader/Loader";
 
 const ShareLayout = () => {
 
@@ -14,7 +16,10 @@ const ShareLayout = () => {
                 </AppBar>
             </header>
             <main>
-                <Outlet />
+                <Suspense fallback={<Loader />}>
+                    <Outlet />
+                </Suspense>
+                
             </main>
         </>
     );
