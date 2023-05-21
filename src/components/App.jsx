@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import ShareLayout from './ShareLayout';
-import Tweets from 'pages/Tweets';
-import Home from 'pages/Home';
+import Tweets from '../pages/Tweets';
+import Home from '../pages/Home';
 
 function App() {
   return (
