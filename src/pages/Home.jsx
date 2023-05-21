@@ -5,7 +5,9 @@ const Home = () => {
     return (
         <div className={css['home-bgd']}>
             <div className={commonCss.container}>
-                {/* <h1>HOME PAGE</h1> */}
+                <div className={css['title-wrap']}>
+                    <h1 className={css['title']}>tweetter</h1>
+                </div>
             </div>
         </div>
         

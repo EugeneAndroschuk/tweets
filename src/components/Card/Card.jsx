@@ -1,6 +1,7 @@
 import { useState } from "react";
 // import avatar from "../../images/hansel.png"
 import FetchUsers from "../../services/FetchUsers";
+import getNumberWithDivider from "../../services/TransformNumber";
 import css from "./Card.module.css";
 
 const Card = ({ user, onChangeFollowers }) => {
@@ -18,9 +19,9 @@ const Card = ({ user, onChangeFollowers }) => {
         setIsPressed(prev => !prev);
     }
 
-    function getNumberWithDivider(number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
+    // function getNumberWithDivider(number) {
+    //     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    // }
 
     return (
         <div className={css['card-wrap']}>

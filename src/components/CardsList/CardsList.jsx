@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import FetchUsers from "../../services/FetchUsers";
+import { onSetCurrentPage, getFilteredUsers } from "../../services/CardListServices";
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Card from "../Card/Card";
@@ -103,27 +104,25 @@ const CardsList = () => {
         setFilterItem(event.target.value);
     };
 
-    function onSetCurrentPage() {
-        try {
-            const unparsed = localStorage.getItem('tweets');
-            const parsed = JSON.parse(unparsed);
-            if (parsed !== null) return Math.ceil(parsed.length / 3);
-            else return 1;
-        } catch (error) {
-            console.log(error);
-            return 1;
-        }
-    }
+    // function onSetCurrentPage() {
+    //     try {
+    //         const unparsed = localStorage.getItem('tweets');
+    //         const parsed = JSON.parse(unparsed);
+    //         if (parsed !== null) return Math.ceil(parsed.length / 3);
+    //         else return 1;
+    //     } catch (error) {
+    //         console.log(error);
+    //         return 1;
+    //     }
+    // }
 
-    function getFilteredUsers(users, filter) {
-        if (filter === " ") return users;
-        else if (filter === "follow") return users.filter(user =>
-            !user.isFollowing);
-        else if (filter === "followings") return users.filter(user =>
-            user.isFollowing);
-    }
-
-
+    // function getFilteredUsers(users, filter) {
+    //     if (filter === " ") return users;
+    //     else if (filter === "follow") return users.filter(user =>
+    //         !user.isFollowing);
+    //     else if (filter === "followings") return users.filter(user =>
+    //         user.isFollowing);
+    // }
 
     return (
         <section className={css.users}>
@@ -143,6 +142,7 @@ const CardsList = () => {
             <Divider sx={{ borderBlockEndWidth: '2px' }} />
 
             <ul className={css['users-list']}>
+                {filteredUsers.length === 0 && !isLoading && <h1>There is No Tweets</h1>}
                 {filteredUsers.length > 0 && filteredUsers.map(user => (
                     <li key={user.id}>
                         <Card user={user} onChangeFollowers={onChangeFollowers} />
@@ -157,5 +157,3 @@ const CardsList = () => {
 }
 
 export default CardsList;
-
-//isDisabled ? css['loadMore-btn_disabled'] : css['loadMore-btn']
