@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/tweets/static/css/main.3b6006c0.css",
-    "main.js": "/tweets/static/js/main.246da49b.js",
+    "main.css": "/tweets/static/css/main.03a84a27.css",
+    "main.js": "/tweets/static/js/main.f283a428.js",
     "static/media/Montserrat-SemiBold.ttf": "/tweets/static/media/Montserrat-SemiBold.62b8eee010e3957d425f.ttf",
     "static/media/Montserrat-Medium.ttf": "/tweets/static/media/Montserrat-Medium.a281f04d4c8926e7dea1.ttf",
     "static/media/signs.png": "/tweets/static/media/signs.b186e544641a66e17d83.png",
     "index.html": "/tweets/index.html",
-    "main.3b6006c0.css.map": "/tweets/static/css/main.3b6006c0.css.map",
-    "main.246da49b.js.map": "/tweets/static/js/main.246da49b.js.map"
+    "main.03a84a27.css.map": "/tweets/static/css/main.03a84a27.css.map",
+    "main.f283a428.js.map": "/tweets/static/js/main.f283a428.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b6006c0.css",
-    "static/js/main.246da49b.js"
+    "static/css/main.03a84a27.css",
+    "static/js/main.f283a428.js"
   ]
 }
